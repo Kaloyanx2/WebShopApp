@@ -17,6 +17,7 @@ namespace WebShopApp.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
