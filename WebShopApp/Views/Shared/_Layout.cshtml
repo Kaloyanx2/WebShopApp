@@ -28,6 +28,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
+
+                        @if (this.User.Identity!.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My Orders</a>
+                            </li>
+                        }
+                        
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                             <li class=" dropdown">
@@ -37,9 +45,17 @@
                                 </button>
 
                                 <ul class=" dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class=" dropdown-item" href="/Statistics/Clients">Clients</a></li>
-                                    <li><a class=" dropdown-item" href="/Statistics/Orders">Orders</a></li>
+                                    <li><a class=" dropdown-item" href="/Client/Index">Clients</a></li>
+                                    <li><a class=" dropdown-item" href="/Order/Index">Orders</a></li>
                                 </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Index">Client</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">All Orders</a>
                             </li>
                         }
                     </ul>

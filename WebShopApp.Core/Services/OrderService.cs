@@ -55,7 +55,7 @@ namespace WebShopApp.Core.Services
 
         public List<Order> GetOrdersByUser(string userId)
         {
-            throw new NotImplementedException();
+            return _context.Orders.Where(o => o.UserId == userId).OrderByDescending(x => x.OrderDate).ToList();
         }
 
         public Order GetOrderById(int orderId)
@@ -72,11 +72,6 @@ namespace WebShopApp.Core.Services
         {
             throw new NotImplementedException();
         }
-        public List<Order> GetOrderByUser(string userId)
-        {
-            return _context.Orders.Where(x => x.UserId == userId)
-                .OrderByDescending(x => x.OrderDate)
-                .ToList();
-        }
+
     }
 }
