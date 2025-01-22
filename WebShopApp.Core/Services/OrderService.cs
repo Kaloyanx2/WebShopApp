@@ -14,7 +14,7 @@ namespace WebShopApp.Core.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IProductService _productService;
-        public  OrderService(ApplicationDbContext context, IProductService productService)
+        public OrderService(ApplicationDbContext context, IProductService productService)
         {
             _context = context;
             _productService = productService;
@@ -22,7 +22,9 @@ namespace WebShopApp.Core.Services
 
         public List<Order> GetOrders()
         {
-            throw new NotImplementedException();
+            
+                return _context.Orders.OrderByDescending(x => x.OrderDate).ToList();
+            
         }
 
         public bool Create(int productId, string userId, int quantity)
@@ -48,6 +50,33 @@ namespace WebShopApp.Core.Services
             this._context.Products.Update(product);
             this._context.Orders.Add(item);
             return _context.SaveChanges() != 0;
+        }
+
+
+        public List<Order> GetOrdersByUser(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order GetOrderById(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RemoveById(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(int orderId, int productId, string userId, int quantity)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Order> GetOrderByUser(string userId)
+        {
+            return _context.Orders.Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.OrderDate)
+                .ToList();
         }
     }
 }
