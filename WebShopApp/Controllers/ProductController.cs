@@ -47,6 +47,63 @@ namespace WebShopApp.Controllers
             return this.View(products);
         }
 
+        public ActionResult DELLIndex(string searchStringCategoryName, string searchStringBrandName)
+        {
+            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
+                .Select(product => new ProductIndexVM
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName,
+                    BrandId = product.BrandId,
+                    BrandName = product.Brand.BrandName,
+                    CategoryId = product.CategoryId,
+                    CategoryName = product.Category.CategoryName,
+                    Picture = product.Picture,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    Discount = product.Discount
+
+                }).Where(x => x.BrandName == "DELL").ToList();
+            return this.View(products);
+        }
+        public ActionResult AcerIndex(string searchStringCategoryName, string searchStringBrandName)
+        {
+            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
+                .Select(product => new ProductIndexVM
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName,
+                    BrandId = product.BrandId,
+                    BrandName = product.Brand.BrandName,
+                    CategoryId = product.CategoryId,
+                    CategoryName = product.Category.CategoryName,
+                    Picture = product.Picture,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    Discount = product.Discount
+
+                }).Where(x => x.BrandName == "Acer").ToList();
+            return this.View(products);
+        }
+        public ActionResult HPIndex(string searchStringCategoryName, string searchStringBrandName)
+        {
+            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
+                .Select(product => new ProductIndexVM
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName,
+                    BrandId = product.BrandId,
+                    BrandName = product.Brand.BrandName,
+                    CategoryId = product.CategoryId,
+                    CategoryName = product.Category.CategoryName,
+                    Picture = product.Picture,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    Discount = product.Discount
+
+                }).Where(x => x.BrandName == "HP").ToList();
+            return this.View(products);
+        }
         // GET: ProductController/Details/5
         [AllowAnonymous]
         public ActionResult Details(int id)

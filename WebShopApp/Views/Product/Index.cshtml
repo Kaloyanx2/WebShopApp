@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<WebShopApp.Models.Product.ProductIndexVM>
+﻿@model IEnumerable<WebShopApp.Models.Product.ProductIndexVM>
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,11 +19,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
-        
+
             <th>
                 @Html.DisplayNameFor(model => model.BrandName)
             </th>
-          
+
             <th>
                 @Html.DisplayNameFor(model => model.CategoryName)
             </th>
@@ -52,7 +52,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.BrandName)
                 </td>
-            
+
                 <td>
                     @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
@@ -71,7 +71,7 @@
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a>
- 
+
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         <a asp-action="Create" asp-controller="Order" asp-route-id="@item.Id" class="btn btn-warning">Order</a>
@@ -86,6 +86,7 @@
 
                 </td>
             </tr>
+            
         }
     </tbody>
 </table>
